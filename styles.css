@@ -208,16 +208,26 @@ h1 {
     transform: translateY(5px);
 }
 
-.arrow-down {
+.arrow-nav {
     margin-top: 0.5rem;
-    font-size: 1.5rem;
-    animation: bounce 2s infinite;
+    font-size: 2rem;
+    animation: bounce-horizontal 2s infinite;
 }
 
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-10px); }
-    60% { transform: translateY(-5px); }
+@keyframes bounce-horizontal {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(0); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(5px); }
+}
+
+.arrow-nav.left {
+    animation: bounce-horizontal-left 2s infinite;
+}
+
+@keyframes bounce-horizontal-left {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(0); }
+    40% { transform: translateX(-10px); }
+    60% { transform: translateX(-5px); }
 }
 
 /* Glass Cards */
