@@ -25,8 +25,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-main);
     line-height: 1.6;
-    overflow-x: hidden;
-    position: relative;
+    overflow: hidden; /* Evitar scroll nativo en PC */
 }
 
 /* Background effects */
@@ -41,20 +40,95 @@ body {
     background: radial-gradient(circle at center, #ffffff 30%, rgba(138, 21, 56, 0.03) 70%, rgba(138, 21, 56, 0.15) 100%);
 }
 
-/* Layout */
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 2rem;
+#presentation {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
 }
 
-/* Hero Section */
-.hero {
-    padding: 6rem 0 4rem;
-    text-align: center;
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.slide-content {
+    max-width: 1000px;
+    width: 100%;
+    max-height: 90vh; /* Permite scroll interno si es muy largo */
+}
+
+.slide-scrollable {
+    overflow-y: auto;
+    padding-right: 1rem;
+}
+
+/* Custom Scrollbar for internal scroll */
+.slide-scrollable::-webkit-scrollbar {
+    width: 8px;
+}
+.slide-scrollable::-webkit-scrollbar-track {
+    background: rgba(138, 21, 56, 0.05); 
+    border-radius: 4px;
+}
+.slide-scrollable::-webkit-scrollbar-thumb {
+    background: var(--primary); 
+    border-radius: 4px;
+}
+
+/* Slider Navigation (Dots) */
+.slider-nav {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 100;
+}
+
+.nav-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(138, 21, 56, 0.2);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.nav-dot:hover {
+    background: rgba(138, 21, 56, 0.5);
+    transform: scale(1.2);
+}
+
+.nav-dot.active {
+    background: var(--primary);
+    box-shadow: 0 0 10px var(--primary-glow);
+}
+
+/* Hero Slide */
+.slide-hero {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .logo-container {
@@ -101,7 +175,45 @@ h1 {
     padding: 0.6rem 2rem;
     border-radius: 30px;
     border: 1px solid rgba(138, 21, 56, 0.15);
-    display: inline-block;
+}
+
+.scroll-indicator {
+    margin-top: 4rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--primary);
+    font-weight: 600;
+    opacity: 0.8;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.scroll-indicator:hover {
+    opacity: 1;
+    transform: translateY(5px);
+}
+
+.arrow-nav {
+    margin-top: 0.5rem;
+    font-size: 2rem;
+    animation: bounce-horizontal 2s infinite;
+}
+
+@keyframes bounce-horizontal {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(0); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(5px); }
+}
+
+.arrow-nav.left {
+    animation: bounce-horizontal-left 2s infinite;
+}
+
+@keyframes bounce-horizontal-left {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(0); }
+    40% { transform: translateX(-10px); }
+    60% { transform: translateX(-5px); }
 }
 
 /* Glass Cards */
@@ -112,15 +224,8 @@ h1 {
     border: 1px solid var(--glass-border);
     border-radius: 16px;
     padding: 3rem;
-    margin-bottom: 3rem;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
     border-top: 4px solid var(--primary); /* Accento formal en borde superior */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.glass-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
 }
 
 .section-title {
@@ -285,38 +390,55 @@ tr:hover td {
 .badge.medium { background: rgba(59, 130, 246, 0.15); color: var(--badge-medium); }
 .badge.critical { background: rgba(239, 68, 68, 0.15); color: var(--badge-critical); }
 
-footer {
-    text-align: center;
-    padding: 2rem 0;
-    color: var(--text-muted);
-    border-top: 1px solid var(--glass-border);
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
-
-/* Animations */
-.fade-in {
-    opacity: 0;
-    animation: fadeIn 1s ease-out forwards;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Responsive / Mobile */
+/* Responsive / Mobile (Landing Page Style ONLY for Mobile) */
 @media (max-width: 768px) {
     body {
-        font-size: 15px; 
+        font-size: 15px;
+        overflow-y: auto; /* Devolvemos el scroll nativo */
     }
 
-    .hero { 
-        padding: 4rem 0 2rem; 
+    #presentation {
+        position: static;
+        height: auto;
     }
 
-    .container {
-        padding: 0 1rem; /* Reducimos los márgenes a los lados */
+    .slider-nav {
+        display: none; /* Ocultamos los puntos de navegación */
+    }
+
+    .slide {
+        position: static;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important; /* Desactivamos animaciones de slides */
+        transition: none !important;
+        padding: 1rem;
+        height: auto;
+        min-height: auto;
+        display: block;
+        margin-bottom: 2rem;
+    }
+
+    .slide-hero {
+        min-height: 80vh;
+        padding: 4rem 1rem 2rem 1rem;
+    }
+
+    .slide-content {
+        max-height: none; /* Quitamos restricciones de altura en las tarjetas */
+    }
+
+    .slide-scrollable {
+        overflow-y: visible;
+        padding-right: 0;
+    }
+
+    /* Mantenemos los modales hermosos pero mejor adaptados */
+    .glass-card { 
+        padding: 1.8rem; 
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        margin: 0 auto;
     }
 
     .uai-logo {
@@ -325,13 +447,11 @@ footer {
 
     h1 { 
         font-size: 2.2rem; 
+        margin-bottom: 1rem;
     }
 
-    /* Mantenemos los modales bonitos, solo reducimos un poco el padding interno para que entre más texto */
-    .glass-card { 
-        padding: 1.8rem; 
-        border-radius: 12px;
-        margin-bottom: 2rem;
+    .scroll-indicator {
+        display: none; /* Ocultamos flechitas */
     }
 
     .section-title { 

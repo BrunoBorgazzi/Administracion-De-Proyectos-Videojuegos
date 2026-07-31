@@ -14,151 +14,247 @@
 <body>
     <div class="background-effects"></div>
 
-    <header class="hero container fade-in">
-        <div class="logo-container">
-            <img src="./LogoUAI-ezgif.com-remove-background.png" alt="Universidad Abierta Interamericana" class="uai-logo">
-        </div>
-        <h1>Gestión y Evaluación de Proyectos de <span class="text-gradient">Videojuegos</span></h1>
-        <p class="subtitle">Análisis teórico, práctico y reflexivo orientado al desarrollo indie en Argentina.</p>
-        <p class="student-name">Alumno: Bruno Borgazzi</p>
-    </header>
+    <div class="slider-nav">
+        <div class="nav-dot active" onclick="goToSlide(0)"></div>
+        <div class="nav-dot" onclick="goToSlide(1)"></div>
+        <div class="nav-dot" onclick="goToSlide(2)"></div>
+        <div class="nav-dot" onclick="goToSlide(3)"></div>
+    </div>
 
-    <main class="container">
-        
-        <!-- PARTE I -->
-        <section class="glass-card fade-in" style="animation-delay: 0.2s;">
-            <h2 class="section-title">Parte I – Teoría</h2>
-            
-            <div class="content-block">
-                <h3>1. Evaluación Ex-ante, Durante y Ex-post</h3>
-                <ul class="styled-list">
-                    <li><strong>Ex-ante (Antes):</strong> Fase de pre-producción. Determina si el proyecto debe hacerse. Analiza viabilidad económica, técnica y comercial. Resultado: GDD inicial.</li>
-                    <li><strong>Durante (Desarrollo):</strong> Fase de producción. Monitoreo y control. Se revisan hitos (Milestones), presupuesto y calidad (ej. Scrum).</li>
-                    <li><strong>Ex-post (Después):</strong> Post-lanzamiento. Análisis de resultados de ventas, recepción, y un "Post-Mortem" de lecciones aprendidas.</li>
-                </ul>
-            </div>
-
-            <div class="content-block">
-                <h3>2. Principales Criterios de Viabilidad</h3>
-                <div class="grid-cards">
-                    <div class="mini-card">
-                        <h4>Económica</h4>
-                        <p>Fondos para el desarrollo y si el ROI esperado justifica el gasto. Financiamiento.</p>
-                    </div>
-                    <div class="mini-card">
-                        <h4>Técnica</h4>
-                        <p>Capacidad del equipo, soporte del motor gráfico y rendimiento en plataformas objetivo.</p>
-                    </div>
-                    <div class="mini-card">
-                        <h4>Comercial</h4>
-                        <p>Existencia de un mercado real, análisis del target y tendencias actuales.</p>
-                    </div>
+    <div id="presentation">
+        <!-- PORTADA -->
+        <section class="slide active">
+            <div class="slide-content slide-hero">
+                <div class="logo-container">
+                    <img src="./LogoUAI-ezgif.com-remove-background.png" alt="Universidad Abierta Interamericana" class="uai-logo">
+                </div>
+                <h1>Gestión y Evaluación de Proyectos de <span class="text-gradient">Videojuegos</span></h1>
+                <p class="subtitle">Análisis teórico, práctico y reflexivo orientado al desarrollo indie en Argentina.</p>
+                <p class="student-name">Alumno: Bruno Borgazzi</p>
+                
+                <div class="scroll-indicator" onclick="goToSlide(1)">
+                    <span>Comenzar Presentación</span>
+                    <div class="arrow-nav">→</div>
                 </div>
             </div>
+        </section>
 
-            <div class="content-block">
-                <h3>3. PMI vs. Agile/Scrum</h3>
-                <div class="highlight-box">
-                    <strong>Agile/Scrum es superior para Indies:</strong> El desarrollo está lleno de incertidumbre y Scrum permite probar rápido, fallar rápido y pivotar sin desperdiciar planificación rígida (como haría el PMI tradicional).
+        <!-- PARTE I -->
+        <section class="slide">
+            <div class="slide-content glass-card slide-scrollable">
+                <h2 class="section-title">Parte I – Teoría</h2>
+                
+                <div class="content-block">
+                    <h3>1. Evaluación Ex-ante, Durante y Ex-post</h3>
+                    <ul class="styled-list">
+                        <li><strong>Ex-ante (Antes):</strong> Fase de pre-producción. Determina si el proyecto debe hacerse. Analiza viabilidad económica, técnica y comercial. Resultado: GDD inicial.</li>
+                        <li><strong>Durante (Desarrollo):</strong> Fase de producción. Monitoreo y control. Se revisan hitos (Milestones), presupuesto y calidad (ej. Scrum).</li>
+                        <li><strong>Ex-post (Después):</strong> Post-lanzamiento. Análisis de resultados de ventas, recepción, y un "Post-Mortem" de lecciones aprendidas.</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <h3>2. Principales Criterios de Viabilidad</h3>
+                    <div class="grid-cards">
+                        <div class="mini-card">
+                            <h4>Económica</h4>
+                            <p>Fondos para el desarrollo y si el ROI esperado justifica el gasto. Financiamiento.</p>
+                        </div>
+                        <div class="mini-card">
+                            <h4>Técnica</h4>
+                            <p>Capacidad del equipo, soporte del motor gráfico y rendimiento en plataformas objetivo.</p>
+                        </div>
+                        <div class="mini-card">
+                            <h4>Comercial</h4>
+                            <p>Existencia de un mercado real, análisis del target y tendencias actuales.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-block">
+                    <h3>3. PMI vs. Agile/Scrum</h3>
+                    <div class="highlight-box">
+                        <strong>Agile/Scrum es superior para Indies:</strong> El desarrollo está lleno de incertidumbre y Scrum permite probar rápido, fallar rápido y pivotar sin desperdiciar planificación rígida (como haría el PMI tradicional).
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- PARTE II -->
-        <section class="glass-card fade-in" style="animation-delay: 0.4s;">
-            <h2 class="section-title">Parte II – Práctica <span class="subtitle-inline">Proyecto: "SandCastleMaker"</span></h2>
-            
-            <div class="content-block">
-                <h3>1. Plan de Proyecto</h3>
-                <ul class="styled-list">
-                    <li><strong>Objetivos:</strong> Completar el desarrollo de un juego de físicas (puzzles con arena húmeda/seca y giroscopio) en Unity. Publicar en plataformas móviles (Android/iOS) y Steam en un plazo de 8-10 meses.</li>
-                </ul>
+        <section class="slide">
+            <div class="slide-content glass-card slide-scrollable">
+                <h2 class="section-title">Parte II – Práctica <span class="subtitle-inline">Proyecto: "SandCastleMaker"</span></h2>
                 
-                <h4>Cronograma (Hitos)</h4>
-                <div class="timeline">
-                    <div class="timeline-item"><strong>Mes 1-2:</strong> Pre-producción (GDD, prototipo de físicas de arena, GyroGravity).</div>
-                    <div class="timeline-item"><strong>Mes 3-4:</strong> Vertical Slice (SandSpawner funcional, primeros niveles, UI base).</div>
-                    <div class="timeline-item"><strong>Mes 5-7:</strong> Producción (Diseño de niveles complejos, KillZones, GoalAreas, pulido de mecánicas).</div>
-                    <div class="timeline-item"><strong>Mes 8:</strong> Integración final (Música, SFX, transiciones de escenas).</div>
-                    <div class="timeline-item"><strong>Mes 9-10:</strong> QA (Pruebas de rendimiento en múltiples celulares), Beta Testing y Lanzamiento.</div>
+                <div class="content-block">
+                    <h3>1. Plan de Proyecto</h3>
+                    <ul class="styled-list">
+                        <li><strong>Objetivos:</strong> Completar el desarrollo de un juego de físicas (puzzles con arena húmeda/seca y giroscopio) en Unity. Publicar en plataformas móviles (Android/iOS) y Steam en un plazo de 8-10 meses.</li>
+                    </ul>
+                    
+                    <h4>Cronograma (Hitos)</h4>
+                    <div class="timeline">
+                        <div class="timeline-item"><strong>Mes 1-2:</strong> Pre-producción (GDD, prototipo de físicas de arena, GyroGravity).</div>
+                        <div class="timeline-item"><strong>Mes 3-4:</strong> Vertical Slice (SandSpawner funcional, primeros niveles, UI base).</div>
+                        <div class="timeline-item"><strong>Mes 5-7:</strong> Producción (Diseño de niveles complejos, KillZones, GoalAreas, pulido de mecánicas).</div>
+                        <div class="timeline-item"><strong>Mes 8:</strong> Integración final (Música, SFX, transiciones de escenas).</div>
+                        <div class="timeline-item"><strong>Mes 9-10:</strong> QA (Pruebas de rendimiento en múltiples celulares), Beta Testing y Lanzamiento.</div>
+                    </div>
+
+                    <p><strong>Presupuesto Estimado:</strong> Adaptado a un equipo indie de 2-3 personas (Sueldos, herramientas Unity, licencias de assets, campaña de marketing en redes).</p>
                 </div>
 
-                <p><strong>Presupuesto Estimado:</strong> Adaptado a un equipo indie de 2-3 personas (Sueldos, herramientas Unity, licencias de assets, campaña de marketing en redes).</p>
-            </div>
-
-            <div class="content-block">
-                <h3>2. Matriz de Evaluación de Riesgos</h3>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Riesgo</th>
-                                <th>Probabilidad</th>
-                                <th>Impacto</th>
-                                <th>Mitigación</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Bugs de físicas y caída de FPS</td>
-                                <td><span class="badge high">Alta</span></td>
-                                <td><span class="badge critical">Crítico</span></td>
-                                <td>Optimización temprana del código (ej. <em>SandPoolManager</em>) y profiling constante en móviles.</td>
-                            </tr>
-                            <tr>
-                                <td>Mala respuesta del giroscopio</td>
-                                <td><span class="badge medium">Media</span></td>
-                                <td><span class="badge high">Alto</span></td>
-                                <td>Realizar <em>playtesting</em> semanal y ofrecer alternativas de control táctil estándar.</td>
-                            </tr>
-                            <tr>
-                                <td>Retraso en diseño de niveles</td>
-                                <td><span class="badge medium">Media</span></td>
-                                <td><span class="badge medium">Medio</span></td>
-                                <td>Crear herramientas de <em>Level Design</em> ágiles dentro de Unity.</td>
-                            </tr>
-                            <tr>
-                                <td>Fuga de personal clave</td>
-                                <td><span class="badge medium">Media</span></td>
-                                <td><span class="badge critical">Crítico</span></td>
-                                <td>Mantener el código limpio, comentado y usar repositorios con Control de Versiones estricto (Git).</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="content-block">
+                    <h3>2. Matriz de Evaluación de Riesgos</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Riesgo</th>
+                                    <th>Probabilidad</th>
+                                    <th>Impacto</th>
+                                    <th>Mitigación</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Bugs de físicas y caída de FPS</td>
+                                    <td><span class="badge high">Alta</span></td>
+                                    <td><span class="badge critical">Crítico</span></td>
+                                    <td>Optimización temprana del código (ej. <em>SandPoolManager</em>) y profiling constante en móviles.</td>
+                                </tr>
+                                <tr>
+                                    <td>Mala respuesta del giroscopio</td>
+                                    <td><span class="badge medium">Media</span></td>
+                                    <td><span class="badge high">Alto</span></td>
+                                    <td>Realizar <em>playtesting</em> semanal y ofrecer alternativas de control táctil estándar.</td>
+                                </tr>
+                                <tr>
+                                    <td>Retraso en diseño de niveles</td>
+                                    <td><span class="badge medium">Media</span></td>
+                                    <td><span class="badge medium">Medio</span></td>
+                                    <td>Crear herramientas de <em>Level Design</em> ágiles dentro de Unity.</td>
+                                </tr>
+                                <tr>
+                                    <td>Fuga de personal clave</td>
+                                    <td><span class="badge medium">Media</span></td>
+                                    <td><span class="badge critical">Crítico</span></td>
+                                    <td>Mantener el código limpio, comentado y usar repositorios con Control de Versiones estricto (Git).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
 
-            <div class="content-block">
-                <h3>3. Informe de Viabilidad</h3>
-                <p>El proyecto es <strong>factible</strong>. Técnicamente, el equipo ya domina la creación de físicas y <em>pooling</em> en Unity. A nivel comercial, los juegos de puzzles físicos (*casual games*) tienen un mercado masivo en móviles, aunque requerirá un gran esfuerzo de marketing para lograr visibilidad orgánica en las <em>App Stores</em>.</p>
+                <div class="content-block">
+                    <h3>3. Informe de Viabilidad</h3>
+                    <p>El proyecto es <strong>factible</strong>. Técnicamente, el equipo ya domina la creación de físicas y <em>pooling</em> en Unity. A nivel comercial, los juegos de puzzles físicos (*casual games*) tienen un mercado masivo en móviles, aunque requerirá un gran esfuerzo de marketing para lograr visibilidad orgánica en las <em>App Stores</em>.</p>
+                </div>
             </div>
         </section>
 
         <!-- PARTE III -->
-        <section class="glass-card fade-in" style="animation-delay: 0.6s;">
-            <h2 class="section-title">Parte III – Reflexión Crítica</h2>
-            
-            <div class="content-block">
-                <h3>1. Rol de la administración en Argentina</h3>
-                <p>En el país, es una herramienta de <strong>supervivencia</strong>. Las variables macroeconómicas obligan a la agilidad; un mal cálculo devela los fondos. Agile es vital para tener productos listos rápidamente. Además, es clave gestionar sin <em>crunch</em> para retener el talento local frente al mercado exterior.</p>
-            </div>
+        <section class="slide">
+            <div class="slide-content glass-card slide-scrollable">
+                <h2 class="section-title">Parte III – Reflexión Crítica</h2>
+                
+                <div class="content-block">
+                    <h3>1. Rol de la administración en Argentina</h3>
+                    <p>En el país, es una herramienta de <strong>supervivencia</strong>. Las variables macroeconómicas obligan a la agilidad; un mal cálculo devela los fondos. Agile es vital para tener productos listos rápidamente. Además, es clave gestionar sin <em>crunch</em> para retener el talento local frente al mercado exterior.</p>
+                </div>
 
-            <div class="content-block">
-                <h3>2. Escalabilidad a nivel Global/AAA</h3>
-                <ul class="styled-list">
-                    <li><strong>Modelo Híbrido:</strong> Cascada para planificación macro con inversores, y Scrum para equipos pequeños (escuadrones).</li>
-                    <li><strong>Departamentalización:</strong> Roles dedicados estrictos (Productor Ejecutivo, QA Leads, Directores de Arte).</li>
-                    <li><strong>Gestión de Riesgos Internacional:</strong> Contemplar presupuesto para localización masiva, certificación en consolas (TRC/Lotcheck) y eventos globales.</li>
-                </ul>
+                <div class="content-block">
+                    <h3>2. Escalabilidad a nivel Global/AAA</h3>
+                    <ul class="styled-list">
+                        <li><strong>Modelo Híbrido:</strong> Cascada para planificación macro con inversores, y Scrum para equipos pequeños (escuadrones).</li>
+                        <li><strong>Departamentalización:</strong> Roles dedicados estrictos (Productor Ejecutivo, QA Leads, Directores de Arte).</li>
+                        <li><strong>Gestión de Riesgos Internacional:</strong> Contemplar presupuesto para localización masiva, certificación en consolas (TRC/Lotcheck) y eventos globales.</li>
+                    </ul>
+                </div>
+
+                <div class="scroll-indicator end-presentation" onclick="goToSlide(0)">
+                    <span>Volver al Inicio</span>
+                    <div class="arrow-nav left">←</div>
+                </div>
             </div>
         </section>
-        
-    </main>
+    </div>
 
-    <footer class="fade-in" style="animation-delay: 0.8s;">
-        <div class="container">
-            <p>Desarrollado para el ciclo lectivo vigente - UAI.</p>
-        </div>
-    </footer>
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.nav-dot');
+        let currentSlide = 0;
+        let isAnimating = false;
+        let isMobile = window.innerWidth <= 768;
+
+        window.addEventListener('resize', () => {
+            isMobile = window.innerWidth <= 768;
+        });
+
+        function goToSlide(n) {
+            // Si es móvil, la navegación por slides está desactivada (es landing page)
+            if (isMobile) {
+                // Hacemos scroll suave hasta la sección correspondiente
+                slides[n].scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+
+            if (isAnimating || n < 0 || n >= slides.length || n === currentSlide) return;
+            isAnimating = true;
+            
+            const direction = n > currentSlide ? 1 : -1;
+            
+            slides[currentSlide].classList.remove('active');
+            slides[currentSlide].style.transform = `translateX(${direction * -50}px)`;
+            slides[currentSlide].style.opacity = '0';
+            slides[currentSlide].style.visibility = 'hidden';
+
+            currentSlide = n;
+            
+            slides[currentSlide].classList.add('active');
+            slides[currentSlide].style.transform = 'translateX(0)';
+            slides[currentSlide].style.opacity = '1';
+            slides[currentSlide].style.visibility = 'visible';
+
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentSlide].classList.add('active');
+
+            setTimeout(() => { isAnimating = false; }, 800);
+        }
+
+        // Mouse wheel logic only for PC
+        window.addEventListener('wheel', (e) => {
+            if (isMobile) return; 
+
+            const scrollableElement = slides[currentSlide].querySelector('.slide-scrollable');
+            if (scrollableElement) {
+                const isScrollingDown = e.deltaY > 0;
+                const isScrollingUp = e.deltaY < 0;
+                
+                const isAtTop = scrollableElement.scrollTop === 0;
+                const isAtBottom = scrollableElement.scrollTop + scrollableElement.clientHeight >= scrollableElement.scrollHeight - 1;
+
+                if ((isScrollingDown && !isAtBottom) || (isScrollingUp && !isAtTop)) {
+                    return; 
+                }
+            }
+
+            if (e.deltaY > 50) {
+                goToSlide(currentSlide + 1);
+            } else if (e.deltaY < -50) {
+                goToSlide(currentSlide - 1);
+            }
+        });
+
+        // Keyboard logic only for PC
+        window.addEventListener('keydown', (e) => {
+            if (isMobile) return;
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+                goToSlide(currentSlide + 1);
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                goToSlide(currentSlide - 1);
+            }
+        });
+
+    </script>
 </body>
 </html>
