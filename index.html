@@ -189,6 +189,11 @@
         const dots = document.querySelectorAll('.nav-dot');
         let currentSlide = 0;
         let isAnimating = false;
+        let isMobile = window.innerWidth <= 768;
+
+        window.addEventListener('resize', () => {
+            isMobile = window.innerWidth <= 768;
+        });
 
         function goToSlide(n) {
             if (isAnimating || n < 0 || n >= slides.length || n === currentSlide) return;
@@ -199,14 +204,20 @@
             
             // Actualizar visualmente la clase active de las diapositivas
             slides[currentSlide].classList.remove('active');
-            slides[currentSlide].style.transform = `translateY(${direction * -20}px)`;
+            
+            if (isMobile) {
+                slides[currentSlide].style.transform = `translateX(${direction * -50}px)`;
+            } else {
+                slides[currentSlide].style.transform = `translateY(${direction * -20}px)`;
+            }
+            
             slides[currentSlide].style.opacity = '0';
             slides[currentSlide].style.visibility = 'hidden';
 
             currentSlide = n;
             
             slides[currentSlide].classList.add('active');
-            slides[currentSlide].style.transform = 'translateY(0)';
+            slides[currentSlide].style.transform = isMobile ? 'translateX(0)' : 'translateY(0)';
             slides[currentSlide].style.opacity = '1';
             slides[currentSlide].style.visibility = 'visible';
 
@@ -219,10 +230,12 @@
 
         // Evento de scroll (rueda del ratón o trackpad)
         window.addEventListener('wheel', (e) => {
+            // Si es móvil, no cambiamos de slide con scroll vertical para dejar leer tranquilo
+            if (isMobile) return; 
+
             // Ignorar scroll si estamos haciendo scroll dentro de una slide muy larga
             const scrollableElement = slides[currentSlide].querySelector('.slide-scrollable');
             if (scrollableElement) {
-                // Verificar si el elemento puede hacer scroll internamente
                 const isScrollingDown = e.deltaY > 0;
                 const isScrollingUp = e.deltaY < 0;
                 
@@ -250,15 +263,22 @@
             }
         });
 
-        // Eventos táctiles para móviles
-        let touchStartY = 0;
-        let touchEndY = 0;
+        // Eventos táctiles para móviles (Solo Horizontal / Libro)
+        let touchStartX = 0;
+        let touchEndX = 0;
 
-        window.addEventListener('touchstart', e => { touchStartY = e.changedTouches[0].screenY; });
+        window.addEventListener('touchstart', e => { 
+            // En móvil detectamos el movimiento horizontal (X)
+            touchStartX = e.changedTouches[0].screenX; 
+        });
+        
         window.addEventListener('touchend', e => { 
-            touchEndY = e.changedTouches[0].screenY; 
-            if (touchStartY - touchEndY > 50) goToSlide(currentSlide + 1);
-            if (touchStartY - touchEndY < -50) goToSlide(currentSlide - 1);
+            if (isMobile) {
+                touchEndX = e.changedTouches[0].screenX; 
+                // Deslizar izquierda pasa a la siguiente, deslizar derecha a la anterior
+                if (touchStartX - touchEndX > 50) goToSlide(currentSlide + 1);
+                if (touchStartX - touchEndX < -50) goToSlide(currentSlide - 1);
+            }
         });
 
     </script>
