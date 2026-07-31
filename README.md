@@ -24,7 +24,9 @@ La página fue construida desde cero priorizando el rendimiento, la estética in
 
 ## 🚀 Cómo visualizar la presentación
 
-Puedes ver la presentación online a través de GitHub Pages (si está habilitado en este repositorio), o de forma local siguiendo estos pasos:
+**🌐 Ver Presentación Online:** [Administración de Proyectos - UAI](https://brunoborgazzi.github.io/Administracion-De-Proyectos-Videojuegos/)
+
+Si prefieres visualizarla de forma local, sigue estos pasos:
 
 1. Clona este repositorio:
    ```bash
