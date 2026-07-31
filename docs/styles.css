@@ -390,55 +390,30 @@ tr:hover td {
 .badge.medium { background: rgba(59, 130, 246, 0.15); color: var(--badge-medium); }
 .badge.critical { background: rgba(239, 68, 68, 0.15); color: var(--badge-critical); }
 
-/* Responsive / Mobile (Landing Page Style ONLY for Mobile) */
+/* Responsive / Mobile */
 @media (max-width: 768px) {
     body {
-        font-size: 15px;
-        overflow-y: auto; /* Devolvemos el scroll nativo */
+        font-size: 15px; 
     }
 
-    #presentation {
-        position: static;
-        height: auto;
-    }
-
-    .slider-nav {
-        display: none; /* Ocultamos los puntos de navegación */
-    }
-
-    .slide {
-        position: static;
-        opacity: 1 !important;
-        visibility: visible !important;
-        transform: none !important; /* Desactivamos animaciones de slides */
-        transition: none !important;
-        padding: 1rem;
-        height: auto;
-        min-height: auto;
-        display: block;
-        margin-bottom: 2rem;
-    }
-
-    .slide-hero {
-        min-height: 80vh;
-        padding: 4rem 1rem 2rem 1rem;
+    .slide { 
+        padding: 2.5rem 1rem 3rem 1rem; 
+        align-items: flex-start; 
     }
 
     .slide-content {
-        max-height: none; /* Quitamos restricciones de altura en las tarjetas */
+        max-height: 88vh; /* Aprovechamos casi toda la altura */
     }
 
-    .slide-scrollable {
-        overflow-y: visible;
-        padding-right: 0;
-    }
-
-    /* Mantenemos los modales hermosos pero mejor adaptados */
+    /* Quitamos el "modal" para dejar el texto libre y aprovechar todo el ancho */
     .glass-card { 
-        padding: 1.8rem; 
-        border-radius: 12px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        margin: 0 auto;
+        background: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        border-top: none;
     }
 
     .uai-logo {
@@ -446,12 +421,18 @@ tr:hover td {
     }
 
     h1 { 
-        font-size: 2.2rem; 
+        font-size: 2rem; 
         margin-bottom: 1rem;
     }
 
-    .scroll-indicator {
-        display: none; /* Ocultamos flechitas */
+    .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .student-name {
+        font-size: 1rem;
+        padding: 0.5rem 1.5rem;
+        margin-top: 1.5rem;
     }
 
     .section-title { 
@@ -459,5 +440,32 @@ tr:hover td {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.5rem;
+        border-bottom-width: 3px;
+    }
+
+    .content-block {
+        margin-bottom: 1.5rem;
+    }
+
+    .content-block h3 {
+        font-size: 1.25rem;
+    }
+
+    /* Slider Nav abajo horizontal en móviles */
+    .slider-nav { 
+        top: auto;
+        bottom: 1rem;
+        right: 50%;
+        transform: translateX(50%);
+        flex-direction: row;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 0.3rem 1rem;
+        border-radius: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .nav-dot {
+        width: 12px;
+        height: 12px;
     }
 }

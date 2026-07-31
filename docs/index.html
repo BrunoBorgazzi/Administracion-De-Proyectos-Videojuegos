@@ -191,13 +191,6 @@
         });
 
         function goToSlide(n) {
-            // Si es móvil, la navegación por slides está desactivada (es landing page)
-            if (isMobile) {
-                // Hacemos scroll suave hasta la sección correspondiente
-                slides[n].scrollIntoView({ behavior: 'smooth' });
-                return;
-            }
-
             if (isAnimating || n < 0 || n >= slides.length || n === currentSlide) return;
             isAnimating = true;
             
@@ -255,6 +248,23 @@
             }
         });
 
+        // Eventos táctiles para móviles (Solo Horizontal / Libro)
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        window.addEventListener('touchstart', e => { 
+            // En móvil detectamos el movimiento horizontal (X)
+            touchStartX = e.changedTouches[0].screenX; 
+        });
+        
+        window.addEventListener('touchend', e => { 
+            if (isMobile) {
+                touchEndX = e.changedTouches[0].screenX; 
+                // Deslizar izquierda pasa a la siguiente, deslizar derecha a la anterior
+                if (touchStartX - touchEndX > 50) goToSlide(currentSlide + 1);
+                if (touchStartX - touchEndX < -50) goToSlide(currentSlide - 1);
+            }
+        });
     </script>
 </body>
 </html>
